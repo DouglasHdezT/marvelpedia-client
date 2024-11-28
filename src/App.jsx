@@ -16,7 +16,7 @@ import HistoryOwnPage from './pages/History/ByUser/HistoryOwn/HistoryOwnPage';
 function App() {
 
   return (
-      <HashRouter>
+      <HashRouter >
         <Mainlayout>
           <Routes>
             <Route path='/' element={<IndexPage/>}/>
