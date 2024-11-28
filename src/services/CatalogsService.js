@@ -59,3 +59,43 @@ export const findComicsByCharacter = async (id, offset, limit) => {
     return undefined;
   }
 }
+
+export const findAllComics = async (offset, limit) => {
+  try {
+    const { data } = await axios.get(`/data/comics/all`, {params: { offset, limit}});
+    return data.data
+  } catch (error) {
+    console.error(error)
+    return undefined;
+  }
+}
+
+export const findHistoryByUser = async (email) => {
+  try {
+    const { data } = await axios.get(`/search-history/by-user`, {params: { user: email}});
+    return data.data
+  } catch (error) {
+    console.error(error)
+    return undefined;
+  }
+}
+
+export const findHistoryInComics = async () => {
+  try {
+    const { data } = await axios.get(`/search-history/by-model/comics`);
+    return data.data
+  } catch (error) {
+    console.error(error)
+    return undefined;
+  }
+}
+
+export const findHistoryOwn = async () => {
+  try {
+    const { data } = await axios.get(`/search-history/own`);
+    return data.data
+  } catch (error) {
+    console.error(error)
+    return undefined;
+  }
+}

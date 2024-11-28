@@ -31,7 +31,14 @@ const menuItems = [
   {
     key: "6789ea50-bccd-457b-83bc-c2ca3553af40",
     label: "Comics",
-    path: "/app/comics"
+    path: "/app/comics",
+    children: [
+      {
+        key: "e5817e54-4ab6-4003-a9a0-9a0f7ab35119",
+        label: "All",
+        path: "/app/comics/all"
+      }
+    ]
   },
   {
     key: "4e5155ea-1889-49bc-8682-10a50fa34bba",
@@ -46,12 +53,12 @@ const menuItems = [
       {
         key: "fe132309-4cd4-45f4-a168-02da92fde0d7",
         label: "By user",
-        path: "/app/characters/by-user"
+        path: "/app/history/by-user"
       },
       {
         key: "4798bf3a-aee7-4930-918b-b10027577cc0",
         label: "Comics search",
-        path: "/app/characters/comics"
+        path: "/app/history/by-comics"
       }
     ]
   }

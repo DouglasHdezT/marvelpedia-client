@@ -43,7 +43,7 @@ const CharactersByComicsPage = () => {
     startLoading();
     if(pagination.offset + pagination.limit <= pagination.total) {
       const _offset = offset + pagination.limit;
-      const _data = await findComicsByName(search, _offset, 5);
+      const _data = await findComicsByName(search, _offset, 20);
 
       if(_data) {
         setPagination(_data);
@@ -52,8 +52,8 @@ const CharactersByComicsPage = () => {
       } else {
         toast("Chracters not found", {type: "warning"})
       }
-      stopLoading();
     } 
+    stopLoading();
   }
 
   return(

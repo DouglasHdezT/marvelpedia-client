@@ -53,8 +53,8 @@ const CharactersByNamePage = () => {
       } else {
         toast("Chracters not found", {type: "warning"})
       }
-      stopLoading();
     } 
+    stopLoading();
   }
 
   return(
