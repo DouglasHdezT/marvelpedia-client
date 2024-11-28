@@ -4,8 +4,8 @@ import { Button, Form, Input } from 'antd';
 import { useEffect, useState } from "react";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 
-const LoginPage = () => {
-  const {login, token} = useUserContext();
+const RegisterPage = () => {
+  const {register, token} = useUserContext();
   const navigate = useNavigate()
 
   const [form] = Form.useForm();
@@ -17,7 +17,7 @@ const LoginPage = () => {
 
   const onFinish = (values) => {
     console.log('Finish:', values);
-    login(values.email, values.password)
+    register(values.email, values.password, ()=> {navigate("/auth/login")} )
   };
 
   if(token) {
@@ -26,7 +26,7 @@ const LoginPage = () => {
 
   return (
     <section className="max-w-96 p-6 bg-slate-50 rounded self-center">
-      <h1 className="text-center font-bold font-montserrat mb-6"> Login </h1>
+      <h1 className="text-center font-bold font-montserrat mb-6"> Register </h1>
        <Form form={form} name="horizontal_login" layout="inline" onFinish={onFinish}>
       <Form.Item
         name="email"
@@ -61,7 +61,7 @@ const LoginPage = () => {
               !!form.getFieldsError().filter(({ errors }) => errors.length).length
             }
           >
-            Log in
+            Register
           </Button>
         )}
       </Form.Item>
@@ -70,4 +70,4 @@ const LoginPage = () => {
   );
 }
 
-export default LoginPage;
+export default RegisterPage;

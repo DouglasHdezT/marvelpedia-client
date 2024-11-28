@@ -1,5 +1,7 @@
 import { Layout, Menu, theme } from 'antd';
 import { useState } from 'react';
+import { useUserContext } from '../../contexts/UserContext';
+import { useNavigate } from 'react-router';
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -60,6 +62,22 @@ const MainLayout = ({children}) => {
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
+
+  const navigate = useNavigate();
+
+  const {token, logout} = useUserContext();
+
+  const navigateToMenu = ({ key }) => {
+    
+    const item = menuItems.map(e => ([e, ...e.children??[]]))
+      .flat()
+      .filter((e) => e.key === key)[0];
+    
+    if(item) {
+      navigate(item.path);
+    }
+  }
+
   return (
     <Layout
       style={{
@@ -67,13 +85,17 @@ const MainLayout = ({children}) => {
       }}
     >
       <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
-        <div className='bg-red-50'>
-          
-        </div>
+        {
+          token && 
+          <div onClick={()=> { logout() }} 
+            className='bg-red-950 p-2 cursor-pointer flex justify-center items-center text-white'>
+            <h1 className='text-lg font-montserrat'> Logout </h1>
+          </div>
+        }
         <Menu 
           theme="dark" 
           mode="inline" 
-          sele
+          onSelect={navigateToMenu}
           items={menuItems} />
       </Sider>
       <Layout>
