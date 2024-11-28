@@ -1,9 +1,10 @@
+import IndexPage from "./pages/IndexPage/IndexPage"
 
 function App() {
 
   return (
     <>
-      <p className=""> Test text </p>
+      <IndexPage/>
     </>
   )
 }
