@@ -3,7 +3,7 @@ function App() {
 
   return (
     <>
-      <p> Test text </p>
+      <p className=""> Test text </p>
     </>
   )
 }
